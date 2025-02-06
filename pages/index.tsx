@@ -18,6 +18,7 @@ export default function DocsPage() {
 
   const articleSection = post ? (
     <>
+      <p className={title()}>{post.Title}</p>
       <p className={prompt()}>Model: {post.Model}</p>
       <p className={prompt()}>Prompt: {post.Prompt}</p>
       <article className="whitespace-pre-wrap">{post.Response}</article>
