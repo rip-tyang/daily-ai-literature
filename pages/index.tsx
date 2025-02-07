@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { today, getLocalTimeZone, CalendarDate } from '@internationalized/date';
+import { today, CalendarDate } from '@internationalized/date';
 import { Calendar } from '@heroui/calendar';
 
 import { prompt, title } from '@/components/primitives';
 import DefaultLayout from '@/layouts/default';
 import { Post } from '@/types';
 
+const TIME_ZONE = 'America/New_York';
+
 export default function DocsPage() {
   const [selectedDate, setSelectedDate] = useState<CalendarDate>(
-    today(getLocalTimeZone())
+    today(TIME_ZONE)
   );
   const [post, setPost] = useState<Post | null>(null);
 
@@ -29,17 +31,17 @@ export default function DocsPage() {
 
   return (
     <DefaultLayout>
-      <section className="flex flex-row gap-20 py-10 md:py-12">
+      <section className="flex flex-row flex-wrap md:flex-nowrap gap-20 py-10 md:py-12">
+        <div className="basis-auto">{articleSection}</div>
         <div className="basis-64">
           <Calendar
             className=""
-            maxValue={today(getLocalTimeZone())}
+            maxValue={today(TIME_ZONE)}
             minValue={new CalendarDate(2025, 2, 3)}
             value={selectedDate}
             onChange={setSelectedDate}
           />
         </div>
-        <div className="basis-auto">{articleSection}</div>
       </section>
     </DefaultLayout>
   );
