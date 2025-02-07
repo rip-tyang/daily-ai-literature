@@ -15,6 +15,7 @@ const getMaxDate = () => {
 const maxDate = getMaxDate();
 
 for (const fileName of allBacklogs) {
+  if (fileName.startsWith('.')) continue;
   if (fileName.endsWith('.json')) {
     const contentFileName = fileName.slice(0, fileName.length - 5) + '.txt';
     const metadata = fs.readFileSync(path.join(backlogPath, fileName));
@@ -32,5 +33,6 @@ for (const fileName of allBacklogs) {
 }
 
 for (const fileName of allBacklogs) {
+  if (fileName.startsWith('.')) continue;
   fs.rmSync(path.join(backlogPath, fileName));
 }
