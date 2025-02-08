@@ -37,8 +37,14 @@ jobs:
         run: |
           node promote_from_backlogs.js
 
-      - name: Checkout
+      - name: Update main
         run: |
           git add .
           git commit -m "Auto commit from Github Action"
+          git push
+
+      - name: Update release
+        run: |
+          git checkout release
+          git rebase main
           git push
