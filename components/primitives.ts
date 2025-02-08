@@ -53,7 +53,7 @@ export const subtitle = tv({
 });
 
 export const prompt = tv({
-  base: 'italic w-full md:w-1/2 my-2 text-md lg:text-l text-default-600 block max-w-full whitespace-pre-wrap',
+  base: 'italic w-full md:w-1/2 my-2 text-md lg:text-l text-default-600 block max-w-full',
   variants: {
     fullWidth: {
       true: '!w-full',

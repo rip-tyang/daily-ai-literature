@@ -11,6 +11,6 @@ export type GeneralError = {
 export type Post = {
   Title: string;
   Model: string;
-  Prompt: string;
+  Prompt: [string];
   Response: string;
 };

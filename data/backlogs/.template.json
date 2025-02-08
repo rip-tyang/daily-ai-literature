@@ -1,5 +1,5 @@
 {
   "Title": "XXX",
   "Model": "DeepSeek R1",
-  "Prompt": "XXXXXX"
+  "Prompt": ["XXXXXX", "XXXXXX"]
 }
