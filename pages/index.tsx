@@ -28,8 +28,8 @@ export default function DocsPage() {
             <p className={prompt()}>Model: {post.Model}</p>
             <p className={prompt()}>
               <ul>Prompt: </ul>
-              {post.Prompt.map((prompt) => (
-                <li>{prompt}</li>
+              {post.Prompt.map((prompt, index) => (
+                <li key={index}>{prompt}</li>
               ))}
             </p>
             <article className="whitespace-pre-wrap">{post.Response}</article>
