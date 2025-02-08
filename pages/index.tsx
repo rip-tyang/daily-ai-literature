@@ -5,6 +5,7 @@ import { Calendar } from '@heroui/calendar';
 import { prompt, title } from '@/components/primitives';
 import DefaultLayout from '@/layouts/default';
 import { Post } from '@/types';
+import { lightLayout } from '@heroui/theme';
 
 const TIME_ZONE = 'America/New_York';
 
@@ -18,21 +19,24 @@ export default function DocsPage() {
     getPost(selectedDate.toString()).then(setPost);
   }, [selectedDate]);
 
-  const articleSection = post ? (
-    <>
-      <p className={title()}>{post.Title}</p>
-      <p className={prompt()}>Model: {post.Model}</p>
-      <p className={prompt()}>Prompt: {post.Prompt}</p>
-      <article className="whitespace-pre-wrap">{post.Response}</article>
-    </>
-  ) : (
-    <></>
-  );
-
   return (
     <DefaultLayout>
       <section className="flex flex-row flex-wrap md:flex-nowrap gap-20 py-10 md:py-12">
-        <div className="basis-auto">{articleSection}</div>
+        {post ? (
+          <div className="basis-auto">
+            <p className={title()}>{post.Title}</p>
+            <p className={prompt()}>Model: {post.Model}</p>
+            <p className={prompt()}>
+              <ul>Prompt: </ul>
+              {post.Prompt.map((prompt) => (
+                <li>{prompt}</li>
+              ))}
+            </p>
+            <article className="whitespace-pre-wrap">{post.Response}</article>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="basis-64">
           <Calendar
             className=""
