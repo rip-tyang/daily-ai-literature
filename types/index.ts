@@ -8,9 +8,12 @@ export type GeneralError = {
   error: string;
 };
 
-export type Post = {
+export type PostMetadata = {
   Title: string;
   Model: string;
   Prompt: [string];
+};
+
+export type Post = PostMetadata & {
   Response: string;
 };
