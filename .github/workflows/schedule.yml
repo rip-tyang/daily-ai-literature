@@ -40,7 +40,7 @@ jobs:
       - name: Update main
         run: |
           git add .
-          git commit -m "Auto commit from Github Action"
+          git diff-index --quiet HEAD || git commit -m "Auto commit from Github Action"
           git push
 
       - name: Update release
