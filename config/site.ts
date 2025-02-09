@@ -10,6 +10,6 @@ export const siteConfig = {
     twitter: 'https://twitter.com/hero_ui',
     docs: 'https://heroui.com',
     discord: 'https://discord.gg/9b6yyZKmH4',
-    sponsor: 'https://github.com/rip-tyang/daily-ai-literature',
+    sponsor: 'https://github.com/sponsors/rip-tyang',
   },
 };
