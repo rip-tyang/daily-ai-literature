@@ -21,8 +21,20 @@ import {
   GithubIcon,
   HeartFilledIcon,
   Logo,
+  ShareIcon,
   WriteIcon,
 } from '@/components/icons';
+
+const handleShare = async () => {
+  if (navigator.share) {
+    await navigator.share({
+      title: document.title,
+      url: window.location.href,
+    });
+  } else {
+    console.error('Share API not supported');
+  }
+};
 
 export const Navbar = () => {
   return (
@@ -61,6 +73,17 @@ export const Navbar = () => {
             <GithubIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
+        </NavbarItem>
+
+        <NavbarItem className="hidden sm:flex">
+          <Button
+            className="text-sm font-normal text-default-600 bg-default-100"
+            startContent={<ShareIcon className="text-danger" />}
+            variant="flat"
+            onPress={handleShare}
+          >
+            分享
+          </Button>
         </NavbarItem>
         <NavbarItem className="hidden sm:flex">
           <Button
