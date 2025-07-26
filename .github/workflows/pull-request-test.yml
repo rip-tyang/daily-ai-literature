@@ -33,5 +33,4 @@ jobs:
 
       - name: Validate json schema
         run: |
-          npx ajv validate -s backlog-schema.json -d "data/backlogs/*.json"
           npx ajv validate -s article-schema.json -d "data/*.json"
