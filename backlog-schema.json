@@ -1,9 +1,0 @@
-{
-  "type": "object",
-  "properties": {
-    "Title": { "type": "string" },
-    "Model": { "type": "string" },
-    "Prompt": { "type": "array", "items": { "type": "string" } }
-  },
-  "required": ["Title", "Model", "Prompt"]
-}
