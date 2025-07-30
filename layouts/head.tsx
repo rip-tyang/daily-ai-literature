@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 export const Head = () => {
   return (
     <NextHead>
-      <title>{siteConfig.name}</title>
+      <title><del>{siteConfig.name}</del>每日赛博废话</title>
       <meta key="title" content={siteConfig.name} property="og:title" />
       <meta content={siteConfig.description} property="og:description" />
       <meta content={siteConfig.description} name="description" />
