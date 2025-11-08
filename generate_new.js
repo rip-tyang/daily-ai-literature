@@ -1,22 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const OpenAI = require('openai');
-
-const THEMES = [
-  '根据近期的时事政治事件，世界局势变化等，',
-  '根据近期的科技新闻，技术突破，新产品发布等，',
-  '根据近期的社会热点，文化现象，流行趋势等，',
-  '根据近期的经济数据，市场动态，行业发展等，',
-  '根据近期的环境问题，气候变化，生态保护等，',
-  '根据近期的教育改革，学术研究，人才培养等，',
-  '根据近期的健康医疗，公共卫生，疾病防控等，',
-];
-const STYLES = [
-  '写一段科幻风格的文章，注意构造严谨的科幻主题背景，避免天马行空的单纯想象。',
-  '写一段散文风格的文章，注重语言的优美和意境的营造，避免过于直白的叙述。',
-  '写一篇纪实风格的文章，注重事实的准确性和客观性，避免主观臆断。',
-  '写一段访谈风格的文章，注意对话的自然流畅和人物性格的真实刻画。',
-];
+const PromptFactory = require('./prompt_factory');
 
 const dataPath = path.join(process.cwd(), '/data');
 const getMaxDate = () => {
@@ -38,13 +23,7 @@ async function main() {
     apiKey,
   });
 
-  const theme = THEMES[Math.floor(THEMES.length * Math.random())];
-  const style = STYLES[Math.floor(STYLES.length * Math.random())];
-  const prompts = `
-  ${theme}
-  ${style}
-  字数在5000字左右。
-  `;
+  const prompts = PromptFactory.generatePrompt();
   const completion = await openai.chat.completions.create({
     messages: [
       {
