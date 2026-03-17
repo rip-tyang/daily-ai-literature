@@ -50,11 +50,16 @@ async function main() {
     Response: content,
   };
   const maxDate = getMaxDate();
+  const prevDate = maxDate;
   maxDate.setDate(maxDate.getDate() + 1);
+  // account for daylight saving time change or other edge cases where the date might not actually change
+  if (maxDate == prevDate) {
+    maxDate.setDate(maxDate.getDate() + 1);
+  }
   const newItemFileName = maxDate.toISOString().slice(0, 10) + '.json';
   fs.writeFileSync(
     path.join(dataPath, newItemFileName),
-    JSON.stringify(newItem, null, 2)
+    JSON.stringify(newItem, null, 2),
   );
 }
 
